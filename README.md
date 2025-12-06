@@ -50,6 +50,14 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
 * 更新AppArmor补丁
 * android binder补丁
 * 更多其他修复补丁自行查看droidian and ubuntu touch调试
+
+----------------------
+gki设备移植自行参考其他gki设备移植补丁
+----------------------
+ *[Ubuntu touch gki移植机型页面] （https://gitlab.com/ubports/porting/community-ports/android13/oneplus-11）
+ 
+ 
+ 
 ----------------------
 droidian和ubuntu touch rootfs系统几个特别注意的东西
 ----------------------
@@ -74,8 +82,9 @@ droidian和ubuntu touch rootfs系统几个特别注意的东西
   * /usr/libexec/lxc-android-config 启动halium各种初始化脚本
   * /lib/systemd/system/lxc-android-config.service 启动halium的服务（移植调试手机无限重启请屏蔽它）
 
+ 
 ----------------------  
-华为Hisilicon上的移植具有很多怪癖
+华为Hisilicon上的移植怪癖
 ----------------------
 
 * 1.内核源码过度定制化需要关闭冲突配置
@@ -94,8 +103,6 @@ droidian和ubuntu touch rootfs系统几个特别注意的东西
 
 * 9.droidian和ubuntu touch的rootfs需要更改wpa_supplicant服务屏蔽p2p，NetworkManager存在兼容性问题连接wifi后异常，只能手动连接wifi
 
-
+----------------------  
+华为Hisilicon上的移植过程
 ----------------------
-gki设备内核自行参考其他gki设备移植补丁
-----------------------
- *[Ubuntu touch gki移植机型页面] （https://gitlab.com/ubports/porting/community-ports/android13/oneplus-11）
