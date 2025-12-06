@@ -55,7 +55,7 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
 ----------------------
 gki设备移植自行参考其他gki设备移植补丁
 ----------------------
- *[Ubuntu touch gki移植机型页面] （https://gitlab.com/ubports/porting/community-ports/android13/oneplus-11）
+ *[Ubuntu touch gki移植机型页面] （https://gitlab.com/ubports/porting/community-ports/android13/oneplus-11 ）
  
  
  
@@ -70,7 +70,7 @@ droidian和ubuntu touch rootfs系统几个特别注意的东西
   * /usr/lib/droid-system-overlay overlayfs覆盖文件system修改
   * /usr/sbin/mount-android.sh 挂载halium启动所需要的分区某些系统你可能需要增加挂载odm分区
   * /etc/systemd/system/lxc@android.service 启动halium的服务（移植调试手机无限重启请屏蔽它）
-  * /etc/systemd/system/adaptation-angelica-configs.ssh-fix.service 修复phosh不正常连接不了ssh（https://github.com/droidian-devices/adaptation-droidian-angelica/blob/droidian/debian/adaptation-angelica-configs.ssh-fix.service）
+  * /etc/systemd/system/adaptation-angelica-configs.ssh-fix.service 修复phosh不正常连接不了ssh（https://github.com/droidian-devices/adaptation-droidian-angelica/blob/droidian/debian/adaptation-angelica-configs.ssh-fix.service ）
   
 --------
   
@@ -94,7 +94,7 @@ droidian和ubuntu touch rootfs系统几个特别注意的东西
 
 * 3.bootloader传递cmdline参数  root=路径  init=/init 寻找system分区并启动系统分区根目录下的init（我们启动droidian和ubuntu必须把rootfs刷到system并放入halium的init脚本到rootfs的根目录才能正常启动系统，cmdline参数我们也可以使用内核参数强制覆盖以达到把rootfs刷到userdata启动系统)
 
-* 4.usb网络rndis共享必须在init脚本阶段启动且关机充电状态下自动启动系统才有效正常启动系统无效（次问题归结无华为定制的usb操作）
+* 4.usb网络rndis共享必须在init脚本阶段启动且关机充电状态下自动启动系统才有效正常启动系统无效（此问题归结无华为定制的usb操作）
 
 * 5.触摸屏在关机充电下自动启动系统下你会失去它可能只有正常启动系统bootlador才会初始化触摸屏（正常开机有触摸没有rndis，关机自动充电开机有rndis没有触摸）
 
