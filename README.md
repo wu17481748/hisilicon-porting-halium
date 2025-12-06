@@ -36,9 +36,9 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
   * [软件包仓库](https://github.com/droidian/porting-guide/blob/zh_CN/host-package-repo.md)
   
 --------
-Ubuntu touch Porting:
- * [Ubuntu touch 旧版移植页面](https://github.com/ubports/porting-notes/wiki/Generic-system-image-(GSI))
- * [Ubuntu touch 20移植页面](https://docs.ubports.com/zh-cn/latest/about/introduction.html)
+* Ubuntu touch Porting:
+  * [Ubuntu touch 旧版移植页面](https://github.com/ubports/porting-notes/wiki/Generic-system-image-(GSI) )
+  * [Ubuntu touch 20移植页面](https://docs.ubports.com/zh-cn/latest/about/introduction.html)
   * [Ubuntu touch 新版移植页面](https://gitlab.com/ubports/porting/community-ports)
 ----------------------
 
@@ -49,8 +49,14 @@ Ubuntu touch Porting:
 *initramfs启动补丁
 *更新AppArmor补丁
 *android binder补丁
-
+*更多其他修复补丁自行查看droidian and ubuntu touch调试
 ----------------------
+droidian和ubuntu  rootfs系统几个特别注意的目录
+----------------------
+
+
+
+
 华为Hisilicon上的移植具有很多怪癖
 ----------------------
 
@@ -60,19 +66,13 @@ Ubuntu touch Porting:
 
 * 3.bootloader传递cmdline参数  root=路径  init=/init 寻找system分区并启动系统分区根目录下的init（我们启动droidian和ubuntu必须把rootfs刷到system并放入halium的init脚本到rootfs的根目录才能正常启动系统，cmdline参数我们也可以使用内核参数强制覆盖以达到把rootfs刷到userdata启动系统)
 
-* 4.usb网络rndis共享必须在init脚本阶段启动且关机充电状态下自动启动系统才有效正常启动系统无效
+* 4.usb网络rndis共享必须在init脚本阶段启动且关机充电状态下自动启动系统才有效正常启动系统无效（次问题归结无华为定制的usb操作）
 
-* 6.触摸屏在关机充电下自动启动系统下你会失去它（正常开机有触摸没有rndis，关机自动充电开机有rndis没有触摸）
+* 5.触摸屏在关机充电下自动启动系统下你会失去它可以只有正常启动系统bootlador才会初始化触摸屏（正常开机有触摸没有rndis，关机自动充电开机有rndis没有触摸）
 
-* 5.需要更改wpa_supplicant服务屏蔽p2p，NetworkManager连接wifi异常，只能手动连接wifi
+* 6.halium正常启动需要屏蔽vendor里的android.hardware.keymaster@3.0-service.rc，android.hardware.gatekeeper@1.0-service.rc 服务因为库文件存在不兼容，涉及usb的rc脚本也可以屏蔽
 
-
-----------------------
-其他非gki设备移植常规操作就可以了
-----------------------
-
-* 1.编译内核开配置, 打initramfs启动补丁，打更新AppArmor补丁，打android binder补丁
-
+* 5.需要更改wpa_supplicant服务屏蔽p2p，NetworkManager存在兼容性问题连接wifi后异常，只能手动连接wifi
 
 
 ----------------------
