@@ -45,11 +45,11 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
 ----------------------
 常规设备移植halium内核
 ----------------------
-*开启halium内核配置
-*initramfs启动补丁
-*更新AppArmor补丁
-*android binder补丁
-*更多其他修复补丁自行查看droidian and ubuntu touch调试
+* 开启halium内核配置
+* initramfs启动补丁
+* 更新AppArmor补丁
+* android binder补丁
+* 更多其他修复补丁自行查看droidian and ubuntu touch调试
 ----------------------
 droidian和ubuntu  rootfs系统几个特别注意的目录
 ----------------------
