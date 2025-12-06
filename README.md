@@ -45,10 +45,10 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
 ----------------------
 常规设备移植halium内核
 ----------------------
-* 开启halium内核配置（https://github.com/erfanoabdi/halium-boot/blob/halium-9.0/check-kernel-config）
-* initramfs启动补丁 （https://github.com/sailfish-on-fxtecpro1/kernel-fxtec-pro1/commit/4995be221047acf5b40610e5c4eacf4b75434500）
+* 开启halium内核配置（https://github.com/erfanoabdi/halium-boot/blob/halium-9.0/check-kernel-config ）
+* initramfs启动补丁 （https://github.com/sailfish-on-fxtecpro1/kernel-fxtec-pro1/commit/4995be221047acf5b40610e5c4eacf4b75434500 ）
 * 更新AppArmor补丁 （https://github.com/ubports/porting-notes/wiki/Generic-system-image-(GSI) ）
-* android binder补丁 （https://github.com/droidian-devices/linux-android-xiaomi-angelica/commits/droidian/drivers/android）
+* android binder补丁 （https://github.com/droidian-devices/linux-android-xiaomi-angelica/commits/droidian/drivers/android ）
 
 * 更多其他修复补丁自行查看droidian and ubuntu touch调试
 
