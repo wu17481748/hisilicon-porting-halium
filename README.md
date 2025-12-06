@@ -51,12 +51,30 @@ Droidian and Ubuntu touch 是一个基于 halium and libhybris 驱动硬件的 G
 * android binder补丁
 * 更多其他修复补丁自行查看droidian and ubuntu touch调试
 ----------------------
-droidian和ubuntu  rootfs系统几个特别注意的目录
+droidian和ubuntu touch rootfs系统几个特别注意的东西
 ----------------------
+* droidian :
+  * /etc/ofono  修复modem的配置
+  * /etc/pulse  修复声音的配置
+  * /etc/udev/rules.d  udev规则放置的位置
+  * /usr/lib/droid-vendor-overlay overlayfs覆盖文件vendor修改
+  * /usr/lib/droid-system-overlay overlayfs覆盖文件system修改
+  * /usr/sbin/mount-android.sh 挂载halium启动所需要的分区某些系统你可能需要增加挂载odm分区
+  * /etc/systemd/system/lxc@android.service 启动halium的服务（移植调试手机无限重启请屏蔽它）
+  * /etc/systemd/system/adaptation-angelica-configs.ssh-fix.service 修复phosh不正常连接不了ssh（https://github.com/droidian-devices/adaptation-droidian-angelica/blob/droidian/debian/adaptation-angelica-configs.ssh-fix.service）
+  
+--------
+  
+* ubuntu touch :
+  * /etc/ofono  修复modem的配置
+  * /etc/pulse  修复声音的配置
+  * /usr/lib/udev/rules.d  udev规则放置的位置
+  * /usr/share/halium-overlay/ overlayfs覆盖文件修改
+  * /usr/sbin/mount-android.sh 挂载halium启动所需要的分区某些系统你可能需要增加挂载odm分区
+  * /usr/libexec/lxc-android-config 启动halium各种初始化脚本
+  * /lib/systemd/system/lxc-android-config.service 启动halium的服务（移植调试手机无限重启请屏蔽它）
 
-
-
-
+----------------------  
 华为Hisilicon上的移植具有很多怪癖
 ----------------------
 
@@ -68,11 +86,13 @@ droidian和ubuntu  rootfs系统几个特别注意的目录
 
 * 4.usb网络rndis共享必须在init脚本阶段启动且关机充电状态下自动启动系统才有效正常启动系统无效（次问题归结无华为定制的usb操作）
 
-* 5.触摸屏在关机充电下自动启动系统下你会失去它可以只有正常启动系统bootlador才会初始化触摸屏（正常开机有触摸没有rndis，关机自动充电开机有rndis没有触摸）
+* 5.触摸屏在关机充电下自动启动系统下你会失去它可能只有正常启动系统bootlador才会初始化触摸屏（正常开机有触摸没有rndis，关机自动充电开机有rndis没有触摸）
 
-* 6.halium正常启动需要屏蔽vendor里的android.hardware.keymaster@3.0-service.rc，android.hardware.gatekeeper@1.0-service.rc 服务因为库文件存在不兼容，涉及usb的rc脚本也可以屏蔽
+* 7.华为需要增加挂载/vendor/modem/modem_fw自行修改对应rootfs的挂载脚本
 
-* 5.需要更改wpa_supplicant服务屏蔽p2p，NetworkManager存在兼容性问题连接wifi后异常，只能手动连接wifi
+* 8.halium正常启动需要屏蔽vendor里的android.hardware.keymaster@3.0-service.rc，android.hardware.gatekeeper@1.0-service.rc 服务因为库文件存在不兼容，涉及usb的rc脚本也可以屏蔽
+
+* 9.droidian和ubuntu touch的rootfs需要更改wpa_supplicant服务屏蔽p2p，NetworkManager存在兼容性问题连接wifi后异常，只能手动连接wifi
 
 
 ----------------------
